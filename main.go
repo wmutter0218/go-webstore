@@ -12,6 +12,9 @@ import (
 
 func main() {
 	e := echo.New()
+	// INFO: If you wanted to load a CSS file, you'd do something like this:
+	// `<link rel="stylesheet" href="assets/styles/styles.css">`
+	e.Static("assets", "./assets")
 	e.GET("/", func(ctx echo.Context) error {
 		return Render(ctx, http.StatusOK, templates.Base())
 	})
