@@ -4,7 +4,9 @@ import (
 	"net/http"
 
 	"github.com/a-h/templ"
-	"github.com/labstack/echo"
+	"github.com/labstack/echo/v4"
+
+	etag "github.com/pablor21/echo-etag/v4"
 
 	"go-store/templates"
 )
@@ -12,10 +14,11 @@ import (
 
 func main() {
 	e := echo.New()
+	e.Use(etag.Etag())
 	// INFO: If you wanted to load a CSS file, you'd do something like this:
 	// `<link rel="stylesheet" href="assets/styles/styles.css">`
 	e.Static("assets", "./assets")
-	e.GET("/", func(ctx echo.Context) error {
+	e.GET("/store", func(ctx echo.Context) error {
 		return Render(ctx, http.StatusOK, templates.Base())
 	})
 
