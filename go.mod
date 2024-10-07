@@ -1,4 +1,4 @@
-module go-store
+module https://github.com/wmutter0218/go-webstore
 
 go 1.22.7
 
